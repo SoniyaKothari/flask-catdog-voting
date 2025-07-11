@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Vote Your Favorite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body class="bg-[#ffe8ec] min-h-screen flex items-center justify-center">
+  <div class="max-w-5xl w-full px-4 py-10">
+    <div class="grid grid-cols-1 gap-10">
+
+      <!-- Cat Section -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="w-full md:w-1/2 aspect-video rounded-xl bg-cover bg-center shadow-lg"
+             style="background-image: url('https://images7.alphacoders.com/367/367217.jpg');">
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col gap-4">
+          <h1 class="text-3xl font-extrabold text-[#111518]">Cat</h1>
+          <p class="text-base text-[#444]">Vote for your favorite feline friend!</p>
+          <form method="POST" action="#results">
+            <input type="hidden" name="animal" value="cat" />
+            <button class="bg-[#1990e5] text-white font-bold px-5 py-2 rounded-lg hover:bg-[#1675ba] transition">
+              Vote
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Dog Section -->
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        <div class="w-full md:w-1/2 aspect-video rounded-xl bg-cover bg-center shadow-lg"
+             style="background-image: url('https://images.unsplash.com/photo-1523480717984-24cba35ae1ef?auto=format&fit=crop&w=1200&q=60');">
+        </div>
+        <div class="w-full md:w-1/2 flex flex-col gap-4">
+          <h1 class="text-3xl font-extrabold text-[#111518]">Dog</h1>
+          <p class="text-base text-[#444]">Vote for your favorite canine companion!</p>
+          <form method="POST" action="#results">
+            <input type="hidden" name="animal" value="dog" />
+            <button class="bg-[#1990e5] text-white font-bold px-5 py-2 rounded-lg hover:bg-[#1675ba] transition">
+              Vote
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Poll Results -->
+    <div id="results" class="mt-10 space-y-6">
+      <!-- Cat Result -->
+      <div>
+        <div class="flex justify-between text-sm font-medium text-[#111518] mb-1">
+          <span>Cats</span>
+          <span>{{ cat_percent or 0 }}% ({{ cat_votes or 0 }} votes)</span>
+        </div>
+        <div class="bg-[#dce1e5] h-2 rounded overflow-hidden">
+          <div class="h-2 bg-[#111518]" data-percent="{{ cat_percent or 0 }}"></div>
+        </div>
+      </div>
+
+      <!-- Dog Result -->
+      <div>
+        <div class="flex justify-between text-sm font-medium text-[#111518] mb-1">
+          <span>Dogs</span>
+          <span>{{ dog_percent or 0 }}% ({{ dog_votes or 0 }} votes)</span>
+        </div>
+        <div class="bg-[#dce1e5] h-2 rounded overflow-hidden">
+          <div class="h-2 bg-[#111518]" data-percent="{{ dog_percent or 0 }}"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Dynamically apply widths from data-percent
+    document.querySelectorAll('[data-percent]').forEach(bar => {
+      const percent = parseInt(bar.getAttribute('data-percent')) || 0;
+      bar.style.width = Math.min(Math.max(percent, 0), 100) + "%";
+    });
+  </script>
+</body>
+</html>
