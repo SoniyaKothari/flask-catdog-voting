@@ -44,7 +44,7 @@ pipeline
                     docker run -d --name flask-container soniya06/flask-project:latest
 
                     echo "Restarting NGINX"
-                    systemctl restart nginx
+                    sudo systemctl restart nginx
 
                 '''
             }
