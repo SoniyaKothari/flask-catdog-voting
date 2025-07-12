@@ -41,7 +41,7 @@ pipeline
                     docker pull soniya06/flask-project:latest
 
                     echo "Running the container via NGINX"
-                    docker run -d --name flask-container soniya06/flask-project:latest
+                    docker run -d -p 5000:5000 --name flask-container soniya06/flask-project:latest
 
                     echo "Restarting NGINX"
                     sudo systemctl restart nginx
