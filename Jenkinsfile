@@ -21,7 +21,10 @@ pipeline
         {
             steps 
             {
-               echo "hi"
+               script
+                {
+                    push("flask-project","latest","soniya06")
+                }
             }
         }
 
