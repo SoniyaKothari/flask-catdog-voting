@@ -67,6 +67,3 @@ This project delivers measurable DevOps benefits:
 
 ---
 
-## 📝 License
-
-This project is open-source and available for learning purposes.
