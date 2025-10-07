@@ -23,7 +23,7 @@ The highlight of the project is its **automated deployment pipeline**, not the a
 
 ### Jenkins Pipeline Dashboard
 ![Jenkins Pipeline](assets/f3.png)
-*Complete CI/CD pipeline execution with stage-wise view and build history*
+*Complete CI/CD pipeline execution with stage-view and build history*
 
 ---
 
